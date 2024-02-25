@@ -1,0 +1,15 @@
+.buildingButton{
+    background-color: #fcba30 !important;
+    color: black !important;
+    width: 70%;
+    padding: 1rem !important;
+    margin-top: 1rem !important;
+}
+
+.buildingList{
+    width: 100%;
+    display: flex;
+    justify-content: center;   
+    flex-direction: column;
+    align-items: center;
+}

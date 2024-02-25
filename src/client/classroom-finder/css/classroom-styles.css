@@ -1,0 +1,18 @@
+.classroomButton{
+    background-color: #0a543c !important;
+    color: white !important;
+    width: 40% !important;
+    padding: 1rem !important;
+    margin: 1rem !important;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+}
+
+.classroomList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
