@@ -10,45 +10,58 @@ import { buildingNameList} from "../constants";
 export default function SearchBox(props) {
 
   const [searchKeyword, setSearchKeyword] = useState('');
-  const [results, setResults] = useState([]);
+
+  const handleRedirect = () =>{
+    if (searchKeyword.length < 2) {
+        alert("Please enter at least 2 characters.");
+        return;
+    }
+    props?.router?.goto(`#/search/${searchKeyword}`);
+  }
+//   const [results, setResults] = useState([]);
+/*
   const handleSearch = ()=>{
 
-    if (searchKeyword.length < 3) {
-        alert("Please enter at least 3 characters.");
+    if (searchKeyword.length < 2) {
+        alert("Please enter at least 2 characters.");
         return;
     }
 
-    let searchResults = [];
+    let searchResults = {};
+    let buildingResults = [];
+    let classroomResults = [];
     for (let building of buildingNameList) {
       if (building.name.toLowerCase().includes(searchKeyword.toLowerCase())) {
-        searchResults.push(building.name);
+        buildingResults.push(building.name);
       }
       for (let room of building.classrooms) {
         if (room.toLowerCase().includes(searchKeyword.toLowerCase())) {
-          searchResults.push(room);
+            classroomResults.push(room);
         }
       }
     }
-    console.log(searchResults);
+    
     //TODO: Implement search building/classroom name
-    if (searchResults.length!==0) {
+    if (buildingResults.length!==0 || classroomResults.length!==0) {
       //TODO: If building/classroom exists, show them results
-      setResults(searchResults);
+      searchResults["buildingResults"] = buildingResults;
+      searchResults["classroomResults"] = classroomResults;
+    //   setResults(searchResults);
+    //   console.log(searchResults);
+      props?.router?.goto(`#/search/${searchResults}`);
     }
     else {
       props?.router?.goto(`#/search/${searchKeyword}`);
     }
         
   };
+  */
   return (
     <div className={homePageStyles.searchBox}>
       <Input name="name" placeholder="Search..." fluid size="large">
         <input onChange={(e)=>{ setSearchKeyword(e.target.value); }} />
-        <Button icon="search" onClick={handleSearch} className={commonStyles.btnGreen}>Search</Button>
+        <Button icon="search" onClick={handleRedirect} className={commonStyles.btnGreen}>Search</Button>
       </Input>
-      {results.map((result, index) => (
-        <div key={index}>{result}</div>
-      ))}
     </div>
   );
 }
