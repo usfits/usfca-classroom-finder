@@ -5,6 +5,7 @@ import classroomStyles from "../css/classroom-styles.css";
 import ClassroomButton from "./classroom-button";
 
 import HomePageButton from "./home-page-button";
+import SearchBox from "./search-box";
 
 
 export default function ClassrooomList(props) {
@@ -19,7 +20,7 @@ export default function ClassrooomList(props) {
   return (
     <Page>
       <BasicSegment>
-        <div>
+        <div className={classroomStyles.classroomListDiv}>
           <h4 className={commonStyles.textCenter}>Select a classroom</h4>
           <hr className={commonStyles.hr50} />
           <div className={classroomStyles.classroomList}>
@@ -27,11 +28,12 @@ export default function ClassrooomList(props) {
               classrooms.map((classroom, index) => (<ClassroomButton key={index} classroomName={classroom.room} {...props} />)) 
             }
           </div>
-          <div className={commonStyles.textCenter}>
-            <br /><br />
-            <HomePageButton />
-          </div>
         </div>
+        <div className={commonStyles.textCenter}>
+          <br /><br />
+          <HomePageButton />
+        </div>
+        <SearchBox {...props} />
       </BasicSegment>
     </Page>
   );

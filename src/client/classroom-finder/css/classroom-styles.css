@@ -16,3 +16,8 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.classroomListDiv{
+    max-height: 60vh;
+    overflow-y: scroll !important;
+}
