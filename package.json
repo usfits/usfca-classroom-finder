@@ -40,7 +40,9 @@
     "access": {
       "write": {
         "users": [
-          "na::gakulkarni"
+          "na::gakulkarni",
+          "na::mma24",
+          "na::jgomezb29usfca"
         ]
       }
     },
