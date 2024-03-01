@@ -1,0 +1,14 @@
+.searchBox{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: center;
+    width: 90%;
+    margin: 2rem !important;
+    padding: 1rem !important;
+}
+
+.searchResultsDiv{
+    max-height: 60vh;
+    overflow-y: scroll !important;
+}

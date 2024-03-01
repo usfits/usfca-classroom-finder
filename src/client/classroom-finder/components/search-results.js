@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 import { Page, BasicSegment} from "@ombiel/aek-lib";
 import HomePageButton from "./home-page-button";
 import BuildingButton from "./building-button";
+import SearchBox from "./search-box";
 import ClassroomButton from "./classroom-button";
 import buildingStyles from "../css/building-styles.css";
 import commonStyles from "../css/common-styles.css";
+import searchStyles from "../css/search-styles.css";
 export default function SearchResults(props) {
   const [buildings, setBuildings] = useState([]);
   const [classrooms, setClassrooms] = useState([]);
@@ -37,7 +39,7 @@ export default function SearchResults(props) {
   return (
     <Page>
       <BasicSegment>
-        <div>
+        <div className={searchStyles.searchResultsDiv}>
             {buildings.length>0 && <h1 className={commonStyles.textCenter}>Buildings</h1>}
           {buildings.length>0 && buildings.map((building, index)=>{
             return(
@@ -57,6 +59,7 @@ export default function SearchResults(props) {
         <div className={commonStyles.textCenter}>
             <HomePageButton />
         </div>
+        <SearchBox {...props} />
       </BasicSegment>
     </Page>
   );

@@ -5,7 +5,7 @@ import {
 } from "@ombiel/aek-lib"; 
 import PropTypes from "prop-types";
 import commonStyles from "../css/common-styles.css";
-import homePageStyles from "../css/homepage-styles.css";
+import searchStyles from "../css/search-styles.css";
 
 export default function SearchBox(props) {
 
@@ -19,7 +19,7 @@ export default function SearchBox(props) {
     props?.router?.goto(`#/search/${searchKeyword}`);
   }
   return (
-    <div className={homePageStyles.searchBox}>
+    <div className={searchStyles.searchBox}>
       <Input name="name" placeholder="Search..." fluid size="large">
         <input onChange={(e)=>{ setSearchKeyword(e.target.value); }} />
         <Button icon="search" onClick={handleRedirect} className={commonStyles.btnGreen}>Search</Button>
