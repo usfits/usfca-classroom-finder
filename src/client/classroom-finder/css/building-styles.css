@@ -11,5 +11,10 @@
     display: flex;
     justify-content: center;   
     flex-direction: column;
-    align-items: center;
+    align-items: center;    
+}
+
+.buildingListDiv{
+    max-height: 25vh;
+    overflow-y: scroll !important;
 }
