@@ -1,20 +1,23 @@
 import React from "react";
 import {
 } from "@ombiel/aek-lib";
+import PropTypes from "prop-types";
 
 import BuildingButton from "./building-button";
-import commonStyles from "../css/common-styles.css";
 import buildingStyles from "../css/building-styles.css";
-import {buildingNameList} from "../constants";
+// import {buildingNameList} from "../constants";
 
 export default function BuildingList(props) {
+  const buildings = props?.masterData;
   return (
-    <div>
-      <h4 className={commonStyles.textCenter}>Buildings & Classrooms</h4>
-      <hr className={commonStyles.hr50} />
-      <div className={buildingStyles.buildingList}>
-        { buildingNameList.map(obj => (<BuildingButton key={obj.name} buildingName={obj.name} {...props} />))}
-      </div>
+    <div className={buildingStyles.buildingList}>
+      {buildings && buildings.map((obj) => (<BuildingButton key={obj.__id} buildingName={obj.building} {...props} />))}
     </div>
+    
   );
 }
+
+BuildingList.propTypes = {
+  ctx: PropTypes.object,
+  masterData: PropTypes.array
+};

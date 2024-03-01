@@ -3,16 +3,19 @@ import { Page, BasicSegment } from "@ombiel/aek-lib";
 import commonStyles from "../css/common-styles.css";
 import classroomStyles from "../css/classroom-styles.css";
 import ClassroomButton from "./classroom-button";
-import { buildingNameList } from "../constants";
+
 import HomePageButton from "./home-page-button";
 
 
 export default function ClassrooomList(props) {
   const buildingName = props.ctx.params.building;
   
-  const buildingObj = buildingNameList.find(building=> building.name.indexOf(buildingName) !== -1);
+  const masterData = props?.masterData;
+  
+  const buildingObj = masterData.find(building=> building.building.indexOf(buildingName) !== -1);
+  
   const classrooms = buildingObj.classrooms;
-  console.log(classrooms);
+
   return (
     <Page>
       <BasicSegment>
@@ -21,7 +24,7 @@ export default function ClassrooomList(props) {
           <hr className={commonStyles.hr50} />
           <div className={classroomStyles.classroomList}>
             {
-              classrooms.map(classroomName => (<ClassroomButton key={classroomName} classroomName={classroomName} {...props} />)) 
+              classrooms.map((classroom, index) => (<ClassroomButton key={index} classroomName={classroom.room} {...props} />)) 
             }
           </div>
           <div className={commonStyles.textCenter}>
