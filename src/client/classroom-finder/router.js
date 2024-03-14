@@ -18,7 +18,7 @@ export default function Router() {
   
   const fetchMasterData = async () =>{
     try {
-      const response = await axios.get(API);
+      const response = await axios.get(`${API}/all`);
       console.log(response.data.data);
       setMasterData(response.data.data);
     }
