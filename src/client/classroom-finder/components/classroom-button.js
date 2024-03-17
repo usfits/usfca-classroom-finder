@@ -13,8 +13,8 @@ export default function ClassroomButton(props) {
   const userid = props.userid;
 
   const updateInteraction = async(userid) =>{
-    //   console.log(response); 
-    axios.post(`${API}/classroom`,
+
+    await axios.post(`${API}/classroom`,
       {
         userid: userid,
         classroom: classroomObj
@@ -25,7 +25,7 @@ export default function ClassroomButton(props) {
   const handleClassroomClick = (classroomName) =>{
     updateInteraction(userid);
 
-    //router.goto(`#/classroom/${classroomName}`);
+    //TODO: router.goto(`#/classroom/${classroomName}`);
   };
   
   return (
