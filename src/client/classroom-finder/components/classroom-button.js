@@ -10,24 +10,19 @@ import classroomStyles from "../css/classroom-styles.css";
 export default function ClassroomButton(props) {
   const classroomName = props.classroomName;
   const classroomObj = props.classroomObj;
+  const userid = props.userid;
 
-  const updateInteraction = async() =>{
-    request
-    .action("get-user", { sso: true })
-    .then((response) => {
+  const updateInteraction = async(userid) =>{
     //   console.log(response); 
-      if (response.body) {
-        axios.post(`${API}/classroom`,
-          {
-            userid: response.body.username,
-            classroom: classroomObj
-          });
-      }
-    });
+    axios.post(`${API}/classroom`,
+      {
+        userid: userid,
+        classroom: classroomObj
+      });
   };
 
   const handleClassroomClick = (classroomName) =>{
-    updateInteraction();
+    updateInteraction(userid);
     //router.goto(`#/classroom/${classroomName}`);
   };
   
