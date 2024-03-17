@@ -1,6 +1,4 @@
 import React from "react";
-import {
-} from "@ombiel/aek-lib";
 import PropTypes from "prop-types";
 import recentStyles from "../css/recent-styles.css";
 import classroomStyles from "../css/classroom-styles.css";
@@ -27,6 +25,12 @@ export default function RecentSearch(props) {
             </div>
           </div>
         )
+        }
+        {recent && recent.length === 0
+        && (
+          <h1>No Recent Search Found</h1>
+        )
+
         }
         {
           recent && recent.map((classroom, index) => (<ClassroomButton key={index} classroomObj={classroom} classroomName={classroom.room} {...props} />)) 

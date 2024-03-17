@@ -32,7 +32,7 @@ export default function Router() {
 
   const refreshCache = async (id) => {
     const response = await axios.get(`${API}/classroom`, {params: { userid: id }});
-    setRecent(response.data.classrooms);
+    setRecent(response.data !== null ? response.data.classrooms : []);
     console.log("Cache refreshed");
   };
 
