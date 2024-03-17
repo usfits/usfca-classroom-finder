@@ -1,9 +1,9 @@
 import React from "react";
 import {
-  Button,
-  request 
+  Button, 
 } from "@ombiel/aek-lib";
 import axios from "axios";
+import PropTypes from "prop-types";
 import {API} from "../constants";
 import classroomStyles from "../css/classroom-styles.css";
 
@@ -19,10 +19,12 @@ export default function ClassroomButton(props) {
         userid: userid,
         classroom: classroomObj
       });
+    props.refreshCache(userid);
   };
 
   const handleClassroomClick = (classroomName) =>{
     updateInteraction(userid);
+
     //router.goto(`#/classroom/${classroomName}`);
   };
   
@@ -30,4 +32,11 @@ export default function ClassroomButton(props) {
     <Button onClick={()=>handleClassroomClick(classroomName)} className={classroomStyles.classroomButton}>{classroomName}</Button>
   );
 }
+
+ClassroomButton.propTypes = {
+  userid: PropTypes.string,
+  refreshCache: PropTypes.func,
+  classroomName: PropTypes.string,
+  classroomObj: PropTypes.object
+};
   

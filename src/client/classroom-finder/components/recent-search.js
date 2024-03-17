@@ -1,25 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  request
 } from "@ombiel/aek-lib";
-import axios from "axios";
+import PropTypes from "prop-types";
 import recentStyles from "../css/recent-styles.css";
 import classroomStyles from "../css/classroom-styles.css";
 import ClassroomButton from "./classroom-button";
-import { API } from "../constants";
 
 export default function RecentSearch(props) {
-  const [recent, setRecent] = useState(null);
-  
-  const fetchRecentInteraction = async (username)=>{
-    const response = await axios.get(`${API}/classroom`, {params: { userid: username }});
-    setRecent(response.data.classrooms);
-  };
-  request
-  .action("get-user", { sso: true })
-  .then((response) => {
-    fetchRecentInteraction(response.body.username);
-  });
+  const recent = props?.recent;
   
   return (
     <div className={classroomStyles.classroomListDiv}>
@@ -47,3 +35,10 @@ export default function RecentSearch(props) {
     </div>
   );
 }
+
+RecentSearch.propTypes = {
+  ctx: PropTypes.object,
+  masterData: PropTypes.array,
+  userid: PropTypes.string,
+  recent: PropTypes.array
+};

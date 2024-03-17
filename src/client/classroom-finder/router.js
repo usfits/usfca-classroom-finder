@@ -15,9 +15,9 @@ import { API } from "./constants";
 const router = new AekReactRouter({useHash: false});
 
 export default function Router() {
-
   const [masterData, setMasterData] = useState(null);
   const [userid, setUserId] = useState(null);
+  const [recent, setRecent] = useState(null);
   
   const fetchMasterData = async () =>{
     try {
@@ -30,29 +30,37 @@ export default function Router() {
     }
   };
 
+  const refreshCache = async (id) => {
+    const response = await axios.get(`${API}/classroom`, {params: { userid: id }});
+    setRecent(response.data.classrooms);
+    console.log("Cache refreshed");
+  };
+
   const fetchUserId = () => {
     request
     .action("get-user", { sso: true })
     .then((response) => {
-      setUserId(sha256(response.body.username).toString());
+      const hashedId = sha256(response.body.username).toString();
+      setUserId(hashedId);
+      refreshCache(hashedId);
     });
   };
   
   useEffect(() => {
-    if (masterData === null) {
-      fetchMasterData();    
-    }
     if (userid === null) {
       fetchUserId();
+    }
+    if (masterData === null) {
+      fetchMasterData();    
     }
   }, [masterData]);
     
   return (
     <RouterView router={router}>
-      <HomePage path="/" {...{router, masterData, userid}} />
+      <HomePage path="/" {...{router, masterData, userid, recent, refreshCache}} />
       <SearchResults path="/search/:keyword" {...{router, masterData}} />
       <NoResultsFound path="/search/no-results/:keyword" {...{router, masterData}} />
-      <ClassrooomList path="/classroom/:building" {...{router, masterData, userid}} />
+      <ClassrooomList path="/classroom/:building" {...{router, masterData, userid, refreshCache}} />
     </RouterView>
   );
 }
