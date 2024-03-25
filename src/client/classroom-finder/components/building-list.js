@@ -11,7 +11,7 @@ export default function BuildingList(props) {
   const buildings = props?.masterData;
   return (
     <div className={buildingStyles.buildingList}>
-      {buildings && buildings.map((obj) => (<BuildingButton key={obj.__id} buildingName={obj.building} {...props} />))}
+      {buildings && buildings.map((obj, index) => (<BuildingButton key={index} buildingName={obj.building} {...props} />))}
     </div>
     
   );

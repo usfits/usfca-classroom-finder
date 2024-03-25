@@ -1,8 +1,19 @@
 <<
 @configure
+  connected:true,
   scripts:[
     "classroom-finder"
   ]
 >>
 
 << extend "templates/master.ect" >>
+
+<< block "init": >>
+{% if aek.action == "get-user" %}
+  {% set utils = aek.extension("CMAuthUtilities") %}
+  {% set attrs = utils.getTokenAttributes() %}
+
+      {{ aek.respond(attrs) }}
+      
+{% endif %}
+<< end >>
