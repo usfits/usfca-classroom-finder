@@ -9,7 +9,6 @@ import {
 import styles from "./css/screen-styles.css";
 import Router from "./router";
 
-
 export default class Screen extends React.Component {
 
   componentDidMount() {
@@ -21,7 +20,7 @@ export default class Screen extends React.Component {
     return (
       <Panel>
         <VBox>
-          <BannerHeader key="header" className={styles.screenTitle} data-flex={0}>Classroom Finder</BannerHeader>
+          {/* <BannerHeader key="header" className={styles.screenTitle} data-flex={0}>Classroom Finder</BannerHeader> */}
           <Panel>
             <HBox>
               <Router />

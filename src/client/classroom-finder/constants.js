@@ -135,3 +135,5 @@ export const buildingNameList = [
     classrooms: ["ED1","ED2","ED3"]
   }
 ];
+
+export const bgColorMap = ["rgba(225,225,225,255)", "rgba(249,230,216,255)", "rgba(213,238,235,255)", "rgba(220,228,213,255)", "rgba(253, 235, 236, 1)"];

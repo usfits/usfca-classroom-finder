@@ -13,6 +13,20 @@
     text-align: center;
 }
 
+.textCenterWhite{
+    color: white !important;
+    text-align: center;
+}
+
+.textCenterBlack{
+    color: black !important;
+    text-align: center;
+}
+
+.backgroundGrey{
+    background-color: #ebe9ea !important;
+}
+
 .btnWide{
     width: 70%;
     padding: 1rem !important;

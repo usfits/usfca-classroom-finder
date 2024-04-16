@@ -25,7 +25,7 @@ export default function ClassrooomList(props) {
           <hr className={commonStyles.hr50} />
           <div className={classroomStyles.classroomList}>
             {
-              classrooms.map((classroom, index) => (<ClassroomButton key={index} classroomName={classroom.room} {...props} />)) 
+              classrooms.map((classroom, index) => (<ClassroomButton key={index} buildingName={buildingName} classroomName={classroom.room} {...props} />)) 
             }
           </div>
         </div>
