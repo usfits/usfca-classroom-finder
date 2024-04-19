@@ -1,8 +1,8 @@
 // export const API = "http://localhost:3000/classroomFinder";
 //Sandbox
-export const API = "https://usfmobileapidev/classroomFinder";
+export const API = "https://usfmobileapidev.usfca.edu/classroomFinder";
 //prod
-// export const API = "https://usfmobile/classroomFinder";
+// export const API = "https://usfmobile.usfca.edu/classroomFinder";
 
 
 //Mock data
