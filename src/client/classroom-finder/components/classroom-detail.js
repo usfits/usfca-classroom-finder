@@ -3,7 +3,7 @@ import {
   Page,
   BasicSegment
 } from "@ombiel/aek-lib";
-import ImageGallery from "react-image-gallery";
+import Carousel from "./carousel-with-thumbnails";
 import classroomDetailStyles from "../css/classroom-detail-styles.css";
 import "../css/classroom-detail-styles.css"
 import commonStyles from "../css/common-styles.css";
@@ -27,7 +27,7 @@ export default function ClassroomDetail(props) {
     const directionItems = classroomObj.directions.split("\n");
     const directionDesc = directionItems.map((item, index) => <p key={index}>{index + 1}-{item}</p>);
 
-    const imageItems = classroomObj.layout.map((item, index) => { return { original: item.thumbnails.large.url, thumbnail: item.thumbnails.small.url, originalWidth: 300, originalHeight: "auto" } });
+    const imageItems = classroomObj.layout.map((item, index) => { return { id: index, value: item.thumbnails.large.url } });
 
     return (
         <Page>
@@ -40,10 +40,10 @@ export default function ClassroomDetail(props) {
             <BasicSegment className={commonStyles.backgroundGrey}>
                 <h5 className={commonStyles.textCenterBlack}>DIRECTIONS TO THE BUILDING</h5>
                 <div className={classroomDetailStyles.directionsIcons}>
-                    <DrivingSvg />
-                    <TransitSvg />
-                    <WalkingSvg />
-                    <AssistiveSvg />
+                <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/driving.svg`}/>
+                    <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/transit.svg`}/>
+                    <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/walking.svg`}/>
+                    <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/assistive.svg`}/>
                 </div>
                 <h5 className={commonStyles.textCenterBlack}>Directions to the classroom</h5>
                 <h4 className={commonStyles.textCenterBlack}>{classroomName}</h4>
@@ -83,7 +83,7 @@ export default function ClassroomDetail(props) {
                     {classroomObj.keyNeeded.map((item, index) => <div style={{ backgroundColor: bgColorMap[index], padding: "4px" }} key={index}>{item}</div>)}
                 </div>
                 <h5>LAYOUT</h5>
-                <ImageGallery items={imageItems}/>
+                <Carousel imgs={imageItems}/>
             </BasicSegment>
         </Page>
     );
