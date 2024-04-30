@@ -1,9 +1,11 @@
 .buildingButton{
-    background-color: #fcba30 !important;
+    background-color: white !important;
     color: black !important;
     width: 70%;
-    padding: 1rem !important;
-    margin-top: 1rem !important;
+    padding: 0.3rem !important;
+    margin-top: 0.3rem !important;
+    text-decoration: underline !important;
+    text-decoration-color: black !important;
 }
 
 .buildingList{
@@ -15,6 +17,7 @@
 }
 
 .buildingListDiv{
+    min-height: 15vh;
     max-height: 25vh;
     overflow-y: scroll !important;
 }

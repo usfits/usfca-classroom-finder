@@ -19,8 +19,7 @@ export default function HomePage(props) {
           <h4 className={commonStyles.textCenter}>Recent Search</h4>
           <hr className={commonStyles.hr50} /><br />
           <div className={buildingStyles.buildingListDiv}>
-            {/* <RecentSearch /> */}
-            <BuildingList {...props} />
+            <RecentSearch {...props} />
           </div>
           <h4 className={commonStyles.textCenter}>Buildings & Classrooms</h4>
           <hr className={commonStyles.hr50} /><br />

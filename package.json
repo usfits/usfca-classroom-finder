@@ -1,6 +1,6 @@
 {
   "name": "@ombiel/usfca-classroom-finder",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "repository": "-",
   "license": "UNLICENSED",
   "scripts": {
@@ -19,6 +19,7 @@
     "@ombiel/aek-css": "1.x.x",
     "@ombiel/aek-lib": "1.x.x",
     "axios": "^1.6.7",
+    "crypto-js": "^4.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.6.6"
   },
