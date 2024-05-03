@@ -1,9 +1,10 @@
-export const API = "http://localhost:3000/classroomFinder/all";
-export const IMAGE_API = "http://localhost:3000/classroomFinder/get-classroom-images";
+// export const API = "http://localhost:3000/classroomFinder/all";
+// export const IMAGE_API = "http://localhost:3000/classroomFinder/get-classroom-images";
 //Sandbox
-// export const API = "http://usfmobileapidev/classroomFinder/all";
+export const API = "https://usfmobileapidev.usfca.edu/classroomFinder";
+export const IMAGE_API = "http://usfmobileapidev.usfca.edu/classroomFinder/get-classroom-images";
 //prod
-// export const API = "http://usfmobile/classroomFinder/all";
+// export const API = "https://usfmobile.usfca.edu/classroomFinder";
 
 
 //Mock data

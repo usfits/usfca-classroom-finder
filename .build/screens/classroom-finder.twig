@@ -3,6 +3,13 @@
   {{ aek.set_aek_version("2.0") }}
   {{ aek.set_header_text('') }}
 
+{% if aek.action == "get-user" %}
+  {% set utils = aek.extension("CMAuthUtilities") %}
+  {% set attrs = utils.getTokenAttributes() %}
+
+      {{ aek.respond(attrs) }}
+      
+{% endif %}
 
 <html lang="en" data-aek-package="[[__package_data__]]" data-public-assets="[[__public_assets__]]" data-env="prod" data-platform="{{ aek.get_platform() }}" >
 <head>
