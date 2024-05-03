@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   Page,
   BasicSegment
@@ -7,13 +8,12 @@ import Carousel from "./carousel-with-thumbnails";
 import classroomDetailStyles from "../css/classroom-detail-styles.css";
 import "../css/classroom-detail-styles.css"
 import commonStyles from "../css/common-styles.css";
-import DrivingSvg from "../icons/driving-icon";
-import TransitSvg from "../icons/transit-icon";
-import WalkingSvg from "../icons/walking-icon";
-import AssistiveSvg from "../icons/assistive-icon";
 import { bgColorMap } from "../constants";
+import { IMAGE_API } from "../constants";
 
 export default function ClassroomDetail(props) {
+    const [images, setImages] = React.useState([]);
+
     const masterData = props?.masterData;
     const classroomName = props.ctx.params.classroom;
     const buildingName = props.ctx.params.building;
@@ -27,7 +27,27 @@ export default function ClassroomDetail(props) {
     const directionItems = classroomObj.directions.split("\n");
     const directionDesc = directionItems.map((item, index) => <p key={index}>{index + 1}-{item}</p>);
 
-    const imageItems = classroomObj.layout.map((item, index) => { return { id: index, value: item.thumbnails.large.url } });
+    // const imageItems = classroomObj.layout.map((item, index) => { return { id: index, value: item.thumbnails.large.url } });
+
+    const getClassroomImages = async () => {
+        try {
+            const response = await axios.post(IMAGE_API, { classroomName }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+            console.log(response.data.data);
+            const imageItems = response.data.data.map((item, index) => { return { id: index, value: item } });
+            console.log(imageItems)
+            setImages(imageItems);
+        } catch (error) {
+            console.log(error);
+        }
+    }   
+
+    React.useEffect(() => { 
+        getClassroomImages();
+    }, []);
 
     return (
         <Page>
@@ -83,7 +103,7 @@ export default function ClassroomDetail(props) {
                     {classroomObj.keyNeeded.map((item, index) => <div style={{ backgroundColor: bgColorMap[index], padding: "4px" }} key={index}>{item}</div>)}
                 </div>
                 <h5>LAYOUT</h5>
-                <Carousel imgs={imageItems}/>
+                <Carousel imgs={images}/>
             </BasicSegment>
         </Page>
     );

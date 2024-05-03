@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import carouselWithThumbnailsStyles from "../css/carousel-with-thumbnails.css"
 
 export default function CarouselWithThumbnails({ imgs }) {
-    const [wordData,setWordData]=useState(imgs[0])
-    const [val,setVal] = useState(0)
+    const [wordData, setWordData] = useState(imgs[0])
+    const [val, setVal] = useState(0)
 
     const handleClick=(index)=>{
         setVal(index)
@@ -29,13 +29,13 @@ export default function CarouselWithThumbnails({ imgs }) {
         <div>
             <div className={carouselWithThumbnailsStyles.main}>
                 <button className={carouselWithThumbnailsStyles.btns} onClick={handlePrevious}>&lt;</button>
-                <img src={wordData.value} height="200" width="320" /> 
+                {wordData && <img src={wordData.value} height="200" width="320" /> }
                 <button className={carouselWithThumbnailsStyles.btns} onClick={handleNext}>&gt;</button>
             </div>
             <div className={carouselWithThumbnailsStyles.flex_row}>
-                {imgs.map((data,i)=>
+                {imgs && imgs.map((data,i)=>
                 <div className={carouselWithThumbnailsStyles.thumbnail} key={i} >
-                <img className={wordData.id == i ? `${carouselWithThumbnailsStyles.clicked}`: ""} src={data.value} onClick={()=>handleClick(i)} height="70" width="100" />
+                {wordData && <img className={wordData.id == i ? `${carouselWithThumbnailsStyles.clicked}`: ""} src={data.value} onClick={() => handleClick(i)} height="70" width="100" />}
                 </div>
                 )}
             </div>

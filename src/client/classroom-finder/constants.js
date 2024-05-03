@@ -1,4 +1,5 @@
 export const API = "http://localhost:3000/classroomFinder/all";
+export const IMAGE_API = "http://localhost:3000/classroomFinder/get-classroom-images";
 //Sandbox
 // export const API = "http://usfmobileapidev/classroomFinder/all";
 //prod
