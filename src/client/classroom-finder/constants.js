@@ -3,9 +3,12 @@
 //Sandbox
 export const API = "https://usfmobileapidev.usfca.edu/classroomFinder";
 export const IMAGE_API = "http://usfmobileapidev.usfca.edu/classroomFinder/get-classroom-images";
+export const CAMPUSM_ASSETS = "https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco";
+export const HERO_IMAGE = "/images/classroom_finder_hero.png";
+
 //prod
 // export const API = "https://usfmobile.usfca.edu/classroomFinder";
-
+//export const IMAGE_API = "http://usfmobileapi.usfca.edu/classroomFinder/get-classroom-images";
 
 //Mock data
 export const buildingNameList = [
