@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Page,
   BasicSegment
@@ -13,6 +13,11 @@ import buildingStyles from "../css/building-styles.css";
 import commonStyles from "../css/common-styles.css";
 import {CAMPUSM_ASSETS_SANDBOX, HERO_IMAGE} from "../constants";
 export default function HomePage(props) {
+  const { masterData } = props;
+  useEffect(() => {
+
+  }, [masterData]);
+
   return (
     <Page>
       <BasicSegment>
@@ -36,4 +41,5 @@ export default function HomePage(props) {
 
 HomePage.propTypes = {
   router: PropTypes.object,
+  masterData: PropTypes.array,
 };
