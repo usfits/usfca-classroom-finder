@@ -3,7 +3,7 @@
     color: white !important;
     width: 40% !important;
     padding: 1rem !important;
-    margin: 1rem !important;
+    margin: 0.5rem !important;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -15,9 +15,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 0rem !important;
 }
 
 .classroomListDiv{
-    max-height: 60vh;
+    background-color: #ebeaea;
+    max-height: 50vh;
     overflow-y: scroll !important;
 }
