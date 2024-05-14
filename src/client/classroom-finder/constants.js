@@ -1,6 +1,8 @@
-// export const API = "http://localhost:3000/classroomFinder";
+// export const API = "http://localhost:3000/classroomFinder/all";
+// export const IMAGE_API = "http://localhost:3000/classroomFinder/get-classroom-images";
 //Sandbox
 export const API = "https://usfmobileapidev.usfca.edu/classroomFinder";
+export const IMAGE_API = "http://usfmobileapidev.usfca.edu/classroomFinder/get-classroom-images";
 //prod
 // export const API = "https://usfmobile.usfca.edu/classroomFinder";
 
@@ -135,3 +137,5 @@ export const buildingNameList = [
     classrooms: ["ED1","ED2","ED3"]
   }
 ];
+
+export const bgColorMap = ["rgba(225,225,225,255)", "rgba(249,230,216,255)", "rgba(213,238,235,255)", "rgba(220,228,213,255)", "rgba(253, 235, 236, 1)"];

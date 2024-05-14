@@ -11,6 +11,7 @@ import HomePage from "./components/home-page";
 import NoResultsFound from "./components/no-results-found";
 import ClassrooomList from "./components/classroom-list";
 import SearchResults from "./components/search-results";
+import ClassroomDetail from "./components/classroom-detail";
 import { API } from "./constants";
 const router = new AekReactRouter({useHash: false});
 
@@ -61,6 +62,7 @@ export default function Router() {
       <SearchResults path="/search/:keyword" {...{router, masterData}} />
       <NoResultsFound path="/search/no-results/:keyword" {...{router, masterData}} />
       <ClassrooomList path="/classroom/:building" {...{router, masterData, userid, refreshCache}} />
+      <ClassroomDetail path="/classroom-detail/:building/:classroom" {...{router, masterData}} />   
     </RouterView>
   );
 }
