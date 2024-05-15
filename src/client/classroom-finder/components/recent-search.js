@@ -34,7 +34,7 @@ export default function RecentSearch(props) {
 
         }
         {
-          recent && recent.map((classroom, index) => (<ClassroomButton key={index} classroomObj={classroom} classroomName={classroom.room} {...props} />)) 
+          recent && recent.map((classroom, index) => (<ClassroomButton key={index} classroomObj={classroom} buildingName={classroom.building} classroomName={classroom.room} {...props} />)) 
         }
       </div>
     </div>
