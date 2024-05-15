@@ -15,11 +15,14 @@ export default function ClassroomButton(props) {
   const userid = props.userid;
 
   const updateInteraction = async(userid) =>{
-
+    let classroom = {
+      ...classroomObj,
+      building: buildingName
+    };
     await axios.post(`${API}/classroom`,
       {
         userid: userid,
-        classroom: classroomObj
+        classroom: classroom
       });
     props.refreshCache(userid);
   };
