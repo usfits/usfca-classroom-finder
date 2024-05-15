@@ -56,6 +56,10 @@ export default function Router(classroomPage) {
       fetchMasterData();  
     }
   }, [userid, masterData]);
+
+  if (masterData !== null && classroomPage !== '') {
+    router.goto(`#/classroom-detail/${classroomPage}`);
+  }
     
   return (
     masterData && userid && (
