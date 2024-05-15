@@ -57,19 +57,10 @@ export default function Router(classroomPage) {
     }
   }, [userid, masterData]);
 
-  useEffect(() => {
-    if (masterData !== null) {
-      if (classroomPage !== '') {
-        router.goto(`#/classroom-detail/${classroomPage}`);
-      }
-    }
-  },[masterData]);
-
-    
   return (
     masterData && userid && (
       <RouterView router={router}>
-        <HomePage path="/" {...{router, masterData, userid, recent, refreshCache}} />
+        <HomePage path="/" {...{router, masterData, userid, recent, refreshCache, classroomPage}} />
         <SearchResults path="/search/:keyword" {...{router, masterData}} />
         <NoResultsFound path="/search/no-results/:keyword" {...{router, masterData}} />
         <ClassrooomList path="/classroom/:building" {...{router, masterData, userid, refreshCache}} />

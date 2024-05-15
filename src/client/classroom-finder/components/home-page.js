@@ -14,9 +14,16 @@ import commonStyles from "../css/common-styles.css";
 import {CAMPUSM_ASSETS_SANDBOX, HERO_IMAGE} from "../constants";
 export default function HomePage(props) {
   const { masterData } = props;
-  useEffect(() => {
+  const { classroomPage } = props;
 
-  }, [masterData]);
+  useEffect(() => {
+    if (masterData !== null) {
+      if (classroomPage.classroomPage !== '') {
+        const { router } = props;
+        router.goto(`#/classroom-detail/${classroomPage}`);
+      }
+    }
+  }, [classroomPage, masterData]);
 
   return (
     <Page>
@@ -42,4 +49,5 @@ export default function HomePage(props) {
 HomePage.propTypes = {
   router: PropTypes.object,
   masterData: PropTypes.array,
+  classroomPage: PropTypes.object
 };
