@@ -15,7 +15,7 @@ import ClassroomDetail from "./components/classroom-detail";
 import { API } from "./constants";
 const router = new AekReactRouter({useHash: false});
 
-export default function Router() {
+export default function Router(classroomPage) {
   const [masterData, setMasterData] = useState(null);
   const [userid, setUserId] = useState(null);
   const [recent, setRecent] = useState(null);
@@ -24,7 +24,8 @@ export default function Router() {
     try {
       const response = await axios.get(`${API}/all`);
       console.log(response.data.data);
-      setMasterData(response.data.data);
+      setMasterData(data => response.data.data);
+      router.goto("#/");
     }
     catch (error) {
       console.log(error);
@@ -52,17 +53,19 @@ export default function Router() {
       fetchUserId();
     }
     if (masterData === null) {
-      fetchMasterData();    
+      fetchMasterData();  
     }
-  }, [masterData]);
+  }, [userid, masterData]);
     
   return (
-    <RouterView router={router}>
-      <HomePage path="/" {...{router, masterData, userid, recent, refreshCache}} />
-      <SearchResults path="/search/:keyword" {...{router, masterData}} />
-      <NoResultsFound path="/search/no-results/:keyword" {...{router, masterData}} />
-      <ClassrooomList path="/classroom/:building" {...{router, masterData, userid, refreshCache}} />
-      <ClassroomDetail path="/classroom-detail/:building/:classroom" {...{router, masterData}} />   
-    </RouterView>
+    masterData && userid && recent && (
+      <RouterView router={router}>
+        <HomePage path="/" {...{router, masterData, userid, recent, refreshCache}} />
+        <SearchResults path="/search/:keyword" {...{router, masterData}} />
+        <NoResultsFound path="/search/no-results/:keyword" {...{router, masterData}} />
+        <ClassrooomList path="/classroom/:building" {...{router, masterData, userid, refreshCache}} />
+        <ClassroomDetail path="/classroom-detail/:building/:classroom" {...{router, masterData}} />   
+      </RouterView>
+    )
   );
 }
