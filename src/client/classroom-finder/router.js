@@ -58,7 +58,7 @@ export default function Router(classroomPage) {
   }, [userid, masterData]);
     
   return (
-    masterData && userid && recent && (
+    masterData && userid && (
       <RouterView router={router}>
         <HomePage path="/" {...{router, masterData, userid, recent, refreshCache}} />
         <SearchResults path="/search/:keyword" {...{router, masterData}} />
