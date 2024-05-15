@@ -57,9 +57,14 @@ export default function Router(classroomPage) {
     }
   }, [userid, masterData]);
 
-  if (masterData !== null && classroomPage !== '') {
-    router.goto(`#/classroom-detail/${classroomPage}`);
-  }
+  useEffect(() => {
+    if (masterData !== null) {
+      if (classroomPage !== '') {
+        router.goto(`#/classroom-detail/${classroomPage}`);
+      }
+    }
+  },[masterData]);
+
     
   return (
     masterData && userid && (
