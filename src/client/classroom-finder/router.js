@@ -19,12 +19,14 @@ export default function Router(classroomPage) {
   const [masterData, setMasterData] = useState(null);
   const [userid, setUserId] = useState(null);
   const [recent, setRecent] = useState(null);
+  const [dataLoaded, setDataLoaded] = useState(false);
   
   const fetchMasterData = async () =>{
     try {
       const response = await axios.get(`${API}/all`);
       console.log(response.data.data);
       setMasterData(data => response.data.data);
+      setDataLoaded(data => true);
       router.goto("#/");
     }
     catch (error) {
@@ -58,14 +60,12 @@ export default function Router(classroomPage) {
   }, [userid, masterData]);
 
   return (
-    masterData && userid && (
-      <RouterView router={router}>
-        <HomePage path="/" {...{router, masterData, userid, recent, refreshCache, classroomPage}} />
-        <SearchResults path="/search/:keyword" {...{router, masterData}} />
-        <NoResultsFound path="/search/no-results/:keyword" {...{router, masterData}} />
-        <ClassrooomList path="/classroom/:building" {...{router, masterData, userid, refreshCache}} />
-        <ClassroomDetail path="/classroom-detail/:building/:classroom" {...{router, masterData}} />   
-      </RouterView>
-    )
+    <RouterView router={router} key={dataLoaded}>
+      <HomePage path="/" {...{router, masterData, userid, recent, refreshCache, classroomPage}} />
+      <SearchResults path="/search/:keyword" {...{router, masterData}} />
+      <NoResultsFound path="/search/no-results/:keyword" {...{router, masterData}} />
+      <ClassrooomList path="/classroom/:building" {...{router, masterData, userid, refreshCache}} />
+      <ClassroomDetail path="/classroom-detail/:building/:classroom" {...{router, masterData}} />   
+    </RouterView>
   );
 }
