@@ -19,10 +19,9 @@ export default function ClassroomDetail(props) {
     const buildingName = props.ctx.params.building;
     const buildingImageName = buildingName.replace(/\s*\(.*?\)\s*/g, '').trim().replace(/\s+/g, '-');
     
-    const buildingObj = masterData.find(building=> building.building.indexOf(buildingName) !== -1);
+    const buildingObj = masterData.find(building=> building.building === buildingName);
 
-    const classroomObj = buildingObj.classrooms.find(classroom=> classroom.room.indexOf(classroomName) !== -1);
-    console.log(classroomObj);
+    const classroomObj = buildingObj.classrooms.find(classroom=> classroom.room === classroomName);
 
     const directionItems = classroomObj.directions.split("\n");
     const directionDesc = directionItems.map((item, index) => <p key={index}>{index + 1}-{item}</p>);
@@ -39,6 +38,9 @@ export default function ClassroomDetail(props) {
             console.log(response.data.data);
             const imageItems = response.data.data.map((item, index) => { return { id: index, value: item } });
             console.log(imageItems)
+            imageItems.map((item, index) => {
+                return {id: index, value: item}
+            })
             setImages(imageItems);
         } catch (error) {
             console.log(error);

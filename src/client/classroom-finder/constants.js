@@ -2,7 +2,7 @@
 // export const IMAGE_API = "http://localhost:3000/classroomFinder/get-classroom-images";
 //Sandbox
 export const API = "https://usfmobileapidev.usfca.edu/classroomFinder";
-export const IMAGE_API = "http://usfmobileapidev.usfca.edu/classroomFinder/get-classroom-images";
+export const IMAGE_API = "https://usfmobileapidev.usfca.edu/classroomFinder/get-classroom-images";
 export const CAMPUSM_ASSETS_SANDBOX = "https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFranciscoSandbox";
 export const HERO_IMAGE = "/images/classroom_finder_hero.png";
 
