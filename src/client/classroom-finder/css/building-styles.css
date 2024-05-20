@@ -6,18 +6,20 @@
     margin-top: 0.3rem !important;
     text-decoration: underline !important;
     text-decoration-color: black !important;
+    text-align: left !important;
 }
 
 .buildingList{
     width: 100%;
     display: flex;
-    justify-content: center;   
+    justify-content: start !important;   
     flex-direction: column;
-    align-items: center;    
+    align-items: center !important;
+    margin-bottom: 0rem !important;    
 }
 
 .buildingListDiv{
     min-height: 15vh;
-    max-height: 25vh;
+    max-height: 30vh;
     overflow-y: scroll !important;
 }

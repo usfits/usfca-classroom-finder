@@ -8,8 +8,7 @@ import Carousel from "./carousel-with-thumbnails";
 import classroomDetailStyles from "../css/classroom-detail-styles.css";
 import "../css/classroom-detail-styles.css"
 import commonStyles from "../css/common-styles.css";
-import { bgColorMap } from "../constants";
-import { IMAGE_API } from "../constants";
+import { IMAGE_API, bgColorMap, buildingLatLong } from "../constants";
 
 export default function ClassroomDetail(props) {
     const [images, setImages] = React.useState([]);
@@ -18,17 +17,15 @@ export default function ClassroomDetail(props) {
     const classroomName = props.ctx.params.classroom;
     const buildingName = props.ctx.params.building;
     const buildingImageName = buildingName.replace(/\s*\(.*?\)\s*/g, '').trim().replace(/\s+/g, '-');
+    const [lat, long] = buildingLatLong[buildingName];
     
-    const buildingObj = masterData.find(building=> building.building.indexOf(buildingName) !== -1);
+    const buildingObj = masterData.find(building=> building.building === buildingName);
 
-    const classroomObj = buildingObj.classrooms.find(classroom=> classroom.room.indexOf(classroomName) !== -1);
-    console.log(classroomObj);
+    const classroomObj = buildingObj.classrooms.find(classroom=> classroom.room === classroomName);
 
     const directionItems = classroomObj.directions.split("\n");
     const directionDesc = directionItems.map((item, index) => <p key={index}>{index + 1}-{item}</p>);
-
-    // const imageItems = classroomObj.layout.map((item, index) => { return { id: index, value: item.thumbnails.large.url } });
-
+    
     const getClassroomImages = async () => {
         try {
             const response = await axios.post(IMAGE_API, { classroomName }, {
@@ -36,9 +33,10 @@ export default function ClassroomDetail(props) {
                     'Content-Type': 'application/json'
                 },
             });
-            console.log(response.data.data);
             const imageItems = response.data.data.map((item, index) => { return { id: index, value: item } });
-            console.log(imageItems)
+            imageItems.map((item, index) => {
+                return {id: index, value: item}
+            })
             setImages(imageItems);
         } catch (error) {
             console.log(error);
@@ -60,9 +58,15 @@ export default function ClassroomDetail(props) {
             <BasicSegment className={commonStyles.backgroundGrey}>
                 <h5 className={commonStyles.textCenterBlack}>DIRECTIONS TO THE BUILDING</h5>
                 <div className={classroomDetailStyles.directionsIcons}>
-                <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/driving.svg`}/>
-                    <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/transit.svg`}/>
-                    <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/walking.svg`}/>
+                    <a href={"campusm://openURL?url=" + encodeURIComponent(`https://www.google.com/maps/dir/?api=1&destination=${lat},${long}&travelmode=driving`) + "&type=external"}>
+                        <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/driving.svg`}/>
+                    </a>
+                    <a href={"campusm://openURL?url=" + encodeURIComponent(`https://www.google.com/maps/dir/?api=1&destination=${lat},${long}&travelmode=transit`) + "&type=external"}>
+                        <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/transit.svg`}/>
+                    </a>
+                    <a href={"campusm://openURL?url=" + encodeURIComponent(`https://www.google.com/maps/dir/?api=1&destination=${lat},${long}&travelmode=walking`) + "&type=external"}>
+                        <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/walking.svg`}/>
+                    </a>
                     <img style={{ height: "60px", width: "60px" }} src={`https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco/AEKs/Classroom-finder/transportation/assistive.svg`}/>
                 </div>
                 <h5 className={commonStyles.textCenterBlack}>Directions to the classroom</h5>

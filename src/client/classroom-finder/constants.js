@@ -1,11 +1,15 @@
-// export const API = "http://localhost:3000/classroomFinder/all";
+// export const API = "http://localhost:3000/classroomFinder";
 // export const IMAGE_API = "http://localhost:3000/classroomFinder/get-classroom-images";
 //Sandbox
 export const API = "https://usfmobileapidev.usfca.edu/classroomFinder";
-export const IMAGE_API = "http://usfmobileapidev.usfca.edu/classroomFinder/get-classroom-images";
+export const IMAGE_API = "https://usfmobileapidev.usfca.edu/classroomFinder/get-classroom-images";
+export const CAMPUSM_ASSETS_SANDBOX = "https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFranciscoSandbox";
+export const HERO_IMAGE = "/images/classroom_finder_hero.png";
+
 //prod
 // export const API = "https://usfmobile.usfca.edu/classroomFinder";
-
+//export const IMAGE_API = "http://usfmobileapi.usfca.edu/classroomFinder/get-classroom-images";
+//export const CAMPUSM_ASSETS_PROD = "https://portal-na.campusm.exlibrisgroup.com/assets/UniversityofSanFrancisco/UniversityofSanFrancisco";
 
 //Mock data
 export const buildingNameList = [
@@ -139,3 +143,16 @@ export const buildingNameList = [
 ];
 
 export const bgColorMap = ["rgba(225,225,225,255)", "rgba(249,230,216,255)", "rgba(213,238,235,255)", "rgba(220,228,213,255)", "rgba(253, 235, 236, 1)"];
+
+export const buildingLatLong = {
+    "281 Masonic (MA)": [37.77903908995889, -122.44745930361432],
+    "Cowell Hall (CO)": [37.77609738666594, -122.45082680586178],
+    "Gleeson Library (GL)": [37.77678981534938, -122.45194057418114],
+    "Harney Science Center (HR)": [37.77702151408126, -122.45117463185167],
+    "Kalmanovitz Hall (KA)": [37.775593216531064, -122.45096774534565],
+    "Lone Mountain (LM)": [37.779359746439646, -122.4520636056911],
+    "Malloy Hall (MH)": [37.775555552967724, -122.44968603232148],
+    "Lo Schiavo Center (LS)": [37.77645089575524, -122.45112053185194],
+    "School of Education (ED)": [37.779015609463755, -122.44850510301637],
+    "Lone Mountain East": [37.77954658817558, -122.45041454534547]
+}

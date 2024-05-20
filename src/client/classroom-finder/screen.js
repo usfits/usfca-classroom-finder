@@ -1,29 +1,42 @@
 import React from "react";
 import {
-  BannerHeader,
   Panel,
   HBox,
-  VBox
+  VBox,
+  parseQueryString,
 } from "@ombiel/aek-lib";
-
-import styles from "./css/screen-styles.css";
 import Router from "./router";
 
 export default class Screen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: ''
+    };
+  }
 
   componentDidMount() {
-
+    try {
+      const location = document.body.getAttribute("data-location");
+      let query = null;
+      if (location !== null && location !== undefined) {
+        query = parseQueryString(location).page;
+        this.setState({ page: query.toString()});
+      }
+    }
+    catch (e) {
+      console.log("Classroom finder : No query parameter found");
+    }
   }
 
   render() {
-
+    const { page } = this.state;
     return (
       <Panel>
         <VBox>
-          {/* <BannerHeader key="header" className={styles.screenTitle} data-flex={0}>Classroom Finder</BannerHeader> */}
           <Panel>
             <HBox>
-              <Router />
+              <Router classroomPage={page} />
             </HBox>
           </Panel>
         </VBox>

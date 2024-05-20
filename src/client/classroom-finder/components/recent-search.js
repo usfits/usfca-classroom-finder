@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import recentStyles from "../css/recent-styles.css";
 import classroomStyles from "../css/classroom-styles.css";
 import ClassroomButton from "./classroom-button";
-
+import commonStyles from "../css/common-styles.css";
 export default function RecentSearch(props) {
   const recent = props?.recent;
   
   return (
     <div className={classroomStyles.classroomListDiv}>
+      <h5 className={`${commonStyles.textCenter} ${commonStyles.paddingTopOne} ${commonStyles.marginBottomZero}`}>Recent Searches</h5>
       <div className={classroomStyles.classroomList}>
         {!recent 
         && (
@@ -33,7 +34,7 @@ export default function RecentSearch(props) {
 
         }
         {
-          recent && recent.map((classroom, index) => (<ClassroomButton key={index} classroomObj={classroom} classroomName={classroom.room} {...props} />)) 
+          recent && recent.map((classroom, index) => (<ClassroomButton key={index} classroomObj={classroom} buildingName={classroom.building} classroomName={classroom.room} {...props} />)) 
         }
       </div>
     </div>
